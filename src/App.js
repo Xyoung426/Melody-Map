@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+// App.js
+import React from 'react';
 import './App.css';
+import Login from './components/login';
+import Logout from './components/logout';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
+const clientID = "111408944834-ld0nlccs1qg29mvae5p8kf8758msp490.apps.googleusercontent.com";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <GoogleOAuthProvider clientId={clientID}>
+            <div className="App" style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '10px',
+                marginTop: '20px'
+            }}>
+                <Login />
+                <Logout />
+            </div>
+        </GoogleOAuthProvider>
+    );
 }
 
 export default App;
